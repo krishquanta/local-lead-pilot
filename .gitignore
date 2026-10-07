@@ -1,0 +1,43 @@
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Credentials & Sensitive Configurations (NEVER COMMIT)
+.env
+*.pem
+*.key
+credentials.json
+token.json
+
+# WhatsApp Browser Profile & Authentication Sessions
+whatsapp_profile/
+*.session
+
+# Test Screenshots & Scratch Files
+scratch/
+Sends
+*.png
+*.jpg
+*.jpeg
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Generated Leads & Campaign Data (NEVER COMMIT)
+leads_output/
+leads_data.js

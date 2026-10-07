@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tamil Nadu Leads Command Center | Web Design Outreach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #090D16;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1F293D;
+      --bg-card: rgba(22, 30, 46, 0.7);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(99, 102, 241, 0.3);
+      --text-main: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --text-dim: #6B7280;
+      --primary: #6366F1;
+      --primary-gradient: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+      --accent-cyan: #06B6D4;
+      --accent-emerald: #10B981;
+      --accent-amber: #F59E0B;
+      --accent-rose: #F43F5E;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(6, 182, 212, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.08) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      background: var(--primary-gradient);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .brand-title h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-title p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--primary-gradient);
+      color: white;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-highlight);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-sub {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 0.3rem;
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .search-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-size: 0.875rem;
+      outline: none;
+      min-width: 240px;
+      transition: border-color 0.2s;
+    }
+
+    .search-box:focus {
+      border-color: var(--primary);
+    }
+
+    select.filter-select {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-size: 0.875rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    select.filter-select option {
+      background: var(--bg-surface);
+      color: var(--text-main);
+    }
+
+    /* Leads Table & Cards */
+    .leads-container {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .lead-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 2.5fr 1.2fr 1fr 1.8fr;
+      align-items: center;
+      gap: 1.5rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .lead-card:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .lead-title-area {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .lead-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lead-tags {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tag-city {
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    .tag-cat {
+      background: rgba(139, 92, 246, 0.15);
+      color: #A78BFA;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .tag-hot {
+      background: rgba(244, 63, 94, 0.15);
+      color: var(--accent-rose);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+
+    .lead-address {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 0.2rem;
+    }
+
+    /* Metrics area */
+    .lead-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .metric-rating {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-amber);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .metric-reviews {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .tag-gmail {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      cursor: pointer;
+    }
+
+    .filter-pills-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      padding: 0.65rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pill-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+    }
+
+    .pill-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+    }
+
+    .pill-btn.pill-social.active {
+      background: linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%);
+      border-color: #06B6D4;
+      box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);
+    }
+
+    .pill-btn.pill-noweb.active {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      border-color: #10B981;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+    }
+
+    .pill-btn.pill-prospects.active {
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+      border-color: #6366F1;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+    }
+
+    .pill-btn.pill-website.active {
+      background: #374151;
+      border-color: #4B5563;
+      color: #D1D5DB;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .pill-count {
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      background: rgba(0, 0, 0, 0.35);
+      font-size: 0.75rem;
+    }
+
+    /* Verification status dropdown */
+    .verification-select {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .verification-select.no-website,
+    .verification-select.no-web-no-social {
+      border-color: var(--accent-emerald);
+      color: var(--accent-emerald);
+    }
+
+    .verification-select.social-only,
+    .verification-select.has-socials {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .verification-select.website-found {
+      border-color: var(--accent-rose);
+      color: var(--accent-rose);
+    }
+
+    /* Action bar per lead */
+    .lead-actions {
+      display: flex;
+      gap: 0.4rem;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .action-icon-btn {
+      padding: 0.45rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.2s;
+    }
+
+    .action-icon-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .action-icon-btn.primary {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: rgba(99, 102, 241, 0.4);
+      color: #818CF8;
+    }
+
+    .action-icon-btn.primary:hover {
+      background: rgba(99, 102, 241, 0.3);
+      color: white;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 1.5rem;
+    }
+
+    .modal-content {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      max-width: 650px;
+      width: 100%;
+      padding: 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      animation: modalFadeIn 0.2s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-header h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .pitch-textarea {
+      width: 100%;
+      height: 180px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      padding: 0.9rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      resize: vertical;
+      outline: none;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    }
+
+    .pitch-textarea:focus,
+    .pitch-input-text:focus {
+      border-color: var(--primary);
+    }
+
+    .modal-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+
+    .modal-tab-btn {
+      background: none;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .modal-tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .modal-tab-btn.active {
+      color: #FFFFFF;
+      background: rgba(99, 102, 241, 0.25);
+      border-color: rgba(99, 102, 241, 0.5);
+    }
+
+    .modal-tab-content {
+      display: none;
+    }
+
+    .modal-tab-content.active {
+      display: block;
+    }
+
+    .pitch-input-group {
+      margin-bottom: 0.85rem;
+    }
+
+    .pitch-input-label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    .pitch-input-text {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      padding: 0.65rem 0.85rem;
+      font-size: 0.85rem;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+
+    .copy-success {
+      display: none;
+      color: var(--accent-emerald);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+
+    .subject-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #94A3B8;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .subject-chip:hover {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: rgba(99, 102, 241, 0.4);
+      color: #E2E8F0;
+    }
+
+    .subject-chip.active {
+      background: rgba(99, 102, 241, 0.25);
+      border-color: #6366F1;
+      color: #A5B4FC;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .lead-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .lead-actions {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand-title">
+        <div class="brand-logo">⚡</div>
+        <div>
+          <h1>Tamil Nadu Lead Intelligence</h1>
+          <p>High-Reputation Businesses with Missing Websites (Google Places Outreach Pipeline)</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span id="liveStatusBadge" style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: #10B981; background: rgba(16,185,129,0.12); padding: 0.4rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(16,185,129,0.3); font-weight: 600;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #10B981; animation: pulse 2s infinite;"></span> LIVE AUTO-REFRESH
+        </span>
+        <button class="btn btn-outline" onclick="fetchLiveLeads(false)" title="Refresh leads right now">
+          🔄 Refresh
+        </button>
+        <label for="csvFileInput" class="btn btn-outline">
+          📂 Load CSV
+        </label>
+        <input type="file" id="csvFileInput" accept=".csv" style="display: none;" onchange="handleFileSelect(event)" />
+        <button class="btn btn-primary" onclick="exportUpdatedCSV()">
+          💾 Export Verified CSV
+        </button>
+      </div>
+    </header>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card" style="border-color: rgba(99, 102, 241, 0.4); background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(0,0,0,0.4));">
+        <div class="stat-label">🎯 Qualified Prospects <span>🔥</span></div>
+        <div class="stat-value" style="color: #818CF8;" id="statTotal">0</div>
+        <div class="stat-sub" id="statCityBreakdown">High-intent (no website)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">📱 Has Socials (No Web) <span>💎</span></div>
+        <div class="stat-value" style="color: var(--accent-cyan);" id="statHasSocials">0</div>
+        <div class="stat-sub">Active online, needs a website!</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">🚫 No Website or Socials <span>🎯</span></div>
+        <div class="stat-value" style="color: var(--accent-emerald);" id="statNoWebNoSocial">0</div>
+        <div class="stat-sub">Pure offline, needs complete setup</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">✉️ Gmail / Emails Found <span>📬</span></div>
+        <div class="stat-value" style="color: var(--accent-amber);" id="statGmails">0</div>
+        <div class="stat-sub">Direct email outreach ready</div>
+      </div>
+      <div class="stat-card" style="border-color: rgba(37, 211, 102, 0.35); background: linear-gradient(135deg, rgba(37,211,102,0.06), rgba(0,0,0,0.4));">
+        <div class="stat-label">💬 WhatsApp Ready <span>🟢</span></div>
+        <div class="stat-value" style="color: #25D366;" id="statWhatsapp">0</div>
+        <div class="stat-sub">Phone-ready for 1-click chat</div>
+      </div>
+      <div class="stat-card" style="border-color: rgba(16, 185, 129, 0.35); background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(0,0,0,0.4));">
+        <div class="stat-label">🚀 Number Mailed <span>✉️</span></div>
+        <div class="stat-value" style="color: #10B981;" id="statMailed">0</div>
+        <div class="stat-sub">Delivered cold email pitches</div>
+      </div>
+    </div>
+
+    <!-- The Primary Filters (Pill Buttons) -->
+    <div class="filter-pills-row">
+      <button class="pill-btn pill-prospects active" id="pillProspects" onclick="setQuickFilter('PROSPECTS')" title="High-intent prospects without existing websites">
+        🎯 High-Intent Prospects <span class="pill-count" id="pillCountProspects" style="background: rgba(99, 102, 241, 0.25); color: #C7D2FE;">0</span>
+      </button>
+      <button class="pill-btn pill-social" id="pillSocial" onclick="setQuickFilter('HAS SOCIALS BUT NO WEBSITE')">
+        📱 Has Socials but No Website <span class="pill-count" id="pillCountSocial">0</span>
+      </button>
+      <button class="pill-btn pill-noweb" id="pillNoWeb" onclick="setQuickFilter('NO WEBSITE OR SOCIALS')">
+        🚫 No Website or Socials <span class="pill-count" id="pillCountNoWeb">0</span>
+      </button>
+      <button class="pill-btn" id="pillWhatsapp" onclick="setQuickFilter('WHATSAPP')" style="border-color: rgba(37, 211, 102, 0.4); color: #25D366;">
+        💬 WhatsApp Ready <span class="pill-count" id="pillCountWhatsapp" style="background: rgba(37, 211, 102, 0.2); color: #25D366;">0</span>
+      </button>
+      <button class="pill-btn" id="pillMailed" onclick="setQuickFilter('MAILED')" style="border-color: rgba(16, 185, 129, 0.4); color: #10B981;">
+        ✉️ Number Mailed <span class="pill-count" id="pillCountMailed" style="background: rgba(16, 185, 129, 0.2); color: #10B981;">0</span>
+      </button>
+      <button class="pill-btn" id="pillReplied" onclick="setQuickFilter('REPLIED')" style="border-color: rgba(6, 182, 212, 0.4); color: #06B6D4;">
+        📬 Replied <span class="pill-count" id="pillCountReplied" style="background: rgba(6, 182, 212, 0.2); color: #06B6D4;">0</span>
+      </button>
+      <button class="pill-btn" id="pillInterested" onclick="setQuickFilter('INTERESTED')" style="border-color: rgba(245, 158, 11, 0.4); color: #F59E0B;">
+        ⭐ Interested <span class="pill-count" id="pillCountInterested" style="background: rgba(245, 158, 11, 0.2); color: #F59E0B;">0</span>
+      </button>
+      <button class="pill-btn" id="pillClient" onclick="setQuickFilter('CLIENT')" style="border-color: rgba(139, 92, 246, 0.4); color: #A78BFA;">
+        🏆 Won Clients <span class="pill-count" id="pillCountClient" style="background: rgba(139, 92, 246, 0.2); color: #A78BFA;">0</span>
+      </button>
+      <button class="pill-btn pill-website" id="pillWebsiteFound" onclick="setQuickFilter('WEBSITE FOUND')" style="border-color: rgba(107, 114, 128, 0.4); color: #9CA3AF;" title="Disqualified: Already have an active website">
+        🌐 Website Found <span class="pill-count" id="pillCountWebsiteFound" style="background: rgba(107, 114, 128, 0.2); color: #9CA3AF;">0</span>
+      </button>
+      <button class="pill-btn" id="pillAll" onclick="setQuickFilter('ALL')">
+        👥 All Shops <span class="pill-count" id="pillCountAll">0</span>
+      </button>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div class="filter-bar">
+      <div class="filter-group">
+        <input type="text" id="searchInput" class="search-box" placeholder="🔍 Search business, phone, email, or city..." oninput="applyFilters()" />
+        <select id="cityFilter" class="filter-select" onchange="applyFilters()">
+          <option value="ALL">All Tamil Nadu Cities</option>
+        </select>
+        <select id="categoryFilter" class="filter-select" onchange="applyFilters()">
+          <option value="ALL">All Categories</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <select id="minReviewsFilter" class="filter-select" onchange="applyFilters()">
+          <option value="0">All Review Counts</option>
+          <option value="100">100+ Reviews</option>
+          <option value="200">200+ Reviews</option>
+          <option value="500">🔥 500+ Reviews Only</option>
+        </select>
+        <select id="statusFilter" class="filter-select" onchange="onStatusFilterChange(this.value)">
+          <option value="PROSPECTS" selected>🎯 High-Intent Prospects (No Website)</option>
+          <option value="ALL">👥 All Scraped Shops (Total DB)</option>
+          <option value="HAS SOCIALS BUT NO WEBSITE">📱 Has Socials but No Website</option>
+          <option value="NO WEBSITE OR SOCIALS">🚫 No Website or Socials</option>
+          <option value="WHATSAPP">💬 WhatsApp Ready (Direct Phone)</option>
+          <option value="MAILED">✉️ Number Mailed (Outreach Sent)</option>
+          <option value="REPLIED">📬 Inbound Replied</option>
+          <option value="INTERESTED">⭐ Interested / Video Requested</option>
+          <option value="CLIENT">🏆 Won Clients</option>
+          <option value="WEBSITE FOUND">🌐 Website Found (Disqualified / Existing Site)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Leads List -->
+    <div class="leads-container" id="leadsContainer">
+      <!-- Injected dynamically -->
+    </div>
+  </div>
+
+  <!-- Outreach / Pitch Modal -->
+  <div class="modal-backdrop" id="pitchModal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-content" style="max-width: 650px;">
+      <div class="modal-header">
+        <div>
+          <h3 id="modalTitle" style="margin-bottom: 0.25rem;">💬 Outreach Pitch</h3>
+          <div id="modalSubtitle" style="font-size: 0.8rem; color: var(--text-muted);"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="modal-tabs">
+        <button class="modal-tab-btn active" id="tabBtnWhatsapp" onclick="switchOutreachTab('whatsapp')">
+          📱 WhatsApp / DM
+        </button>
+        <button class="modal-tab-btn" id="tabBtnEmail" onclick="switchOutreachTab('email')">
+          ✉️ Email (Gmail)
+        </button>
+      </div>
+
+      <!-- WhatsApp Panel -->
+      <div class="modal-tab-content active" id="tabContentWhatsapp">
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+          Casual, friendly message that sounds like a real person. No corporate buzzwords or spam triggers.
+        </p>
+        <textarea id="pitchWhatsappText" class="pitch-textarea" style="height: 190px;" oninput="updateWhatsappLink()"></textarea>
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <button class="btn btn-primary" onclick="copyWhatsappPitch()">
+              📋 Copy WhatsApp Text
+            </button>
+            <span class="copy-success" id="copyWaSuccessMsg">✓ Copied!</span>
+          </div>
+          <a id="directWhatsappBtn" href="#" target="_blank" class="btn btn-outline" style="color: #25D366; border-color: rgba(37, 211, 102, 0.4); font-weight: 600;">
+            🟢 Open in WhatsApp Web ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Email Panel -->
+      <div class="modal-tab-content" id="tabContentEmail">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="pitch-input-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+              <label class="pitch-input-label" style="margin-bottom: 0;">To (Recipient Email)</label>
+              <span id="emailValidationStatus" style="font-size: 0.72rem; font-weight: 600;"></span>
+            </div>
+            <input type="text" id="pitchEmailTo" class="pitch-input-text" placeholder="owner@gmail.com" oninput="updateEmailLinks()" />
+          </div>
+          <div class="pitch-input-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+              <label class="pitch-input-label" style="margin-bottom: 0;">Subject</label>
+              <span style="font-size: 0.72rem; color: #10B981; font-weight: 600; display: inline-flex; align-items: center; gap: 0.2rem;">
+                ⚡ High-Open Rate
+              </span>
+            </div>
+            <input type="text" id="pitchEmailSubject" class="pitch-input-text" oninput="updateEmailLinks()" />
+            <div id="subjectChipsContainer" style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.45rem;">
+              <!-- Dynamic subject chips injected via JS -->
+            </div>
+          </div>
+        </div>
+        <div class="pitch-input-group">
+          <label class="pitch-input-label">Message Body</label>
+          <textarea id="pitchEmailBody" class="pitch-input-text" style="height: 190px; font-family: inherit; font-size: 0.85rem; line-height: 1.5; resize: vertical;" oninput="updateEmailLinks()"></textarea>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+          <div>
+            <button class="btn btn-primary" onclick="copyEmailPitch()">
+              📋 Copy Email
+            </button>
+            <span class="copy-success" id="copyEmailSuccessMsg">✓ Copied!</span>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <a id="directMailtoBtn" href="#" class="btn btn-outline" style="color: #94A3B8; border-color: rgba(148, 163, 184, 0.3);">
+              ✉️ Mail App ↗
+            </a>
+            <a id="directGmailWebBtn" href="#" target="_blank" class="btn btn-outline" style="color: #EF4444; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.1); font-weight: 600;">
+              🔴 Open in Gmail Web ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="leads_data.js"></script>
+  <script>
+    // Embedded initial data loaded from the latest generator run
+    let leadsData = (typeof window.EMBEDDED_LEADS !== "undefined" && Array.isArray(window.EMBEDDED_LEADS) && window.EMBEDDED_LEADS.length > 0)
+      ? window.EMBEDDED_LEADS
+      : [
+        {
+          "Business Name": "Sample Luxury Salon",
+          "Category": "salons",
+          "City": "Chennai",
+          "Rating": "4.8",
+          "Review Count": "240",
+          "Phone": "09876543210",
+          "Cleaned Mobile": "919876543210",
+          "Gmail": "sample@example.com",
+          "Website": "",
+          "Website Status": "No Website Listed",
+          "Social Media URL": "",
+          "Address": "123 Anna Salai, Chennai, Tamil Nadu 600002",
+          "Google Maps URL": "https://maps.google.com",
+          "Lead Score": "85",
+          "Priority Tier": "⭐ HIGH PRIORITY",
+          "Verification Status": "NO WEBSITE LISTED",
+          "Verification Notes": "Verified No Website",
+          "Google Place ID": "ChIJsample123",
+          "WhatsApp Status": "READY_TO_SEND",
+          "Conversion Stage": "DISCOVERED"
+        }
+      ]
+    let currentLeads = [...leadsData];
+
+    async function fetchLiveLeads(silent = true) {
+      const liveBadge = document.getElementById("liveStatusBadge");
+      try {
+        const endpoint = (window.location.protocol === "file:")
+          ? "http://localhost:8521/api/latest-leads"
+          : "/api/latest-leads";
+        const response = await fetch(endpoint + "?t=" + Date.now());
+        if (response.ok) {
+          const result = await response.json();
+          if (result.leads && result.leads.length > 0) {
+            leadsData = result.leads;
+            const fileSub = document.getElementById("statCityBreakdown");
+            if (fileSub && result.file) {
+              fileSub.innerText = `Active file: ${result.file} (${result.leads.length} total)`;
+            }
+            if (liveBadge) {
+              liveBadge.style.display = "inline-flex";
+              liveBadge.title = `Last synced: ${new Date().toLocaleTimeString()}`;
+            }
+            populateFilterDropdowns();
+            renderStats();
+            applyFilters();
+            if (!silent) {
+              alert(`Updated! Currently showing ${leadsData.length} live leads from ${result.file}.`);
+            }
+            return true;
+          }
+        }
+      } catch (err) {
+        console.warn("Could not fetch from /api/latest-leads:", err);
+      }
+      return false;
+    }
+
+    async function init(isSubInit = false) {
+      populateFilterDropdowns();
+      renderStats();
+      applyFilters();
+
+      if (!isSubInit) {
+        fetchLiveLeads(true).then(loaded => {
+          if (!loaded) {
+            loadLatestLeadsFromBackend();
+          }
+        }).catch(() => {});
+
+        // Poll every 10 seconds for real-time live scraper updates if server running
+        setInterval(() => {
+          fetchLiveLeads(true);
+        }, 10000);
+      }
+    }
+
+    function populateFilterDropdowns() {
+      const cities = Array.from(new Set(leadsData.map(l => l["City"]).filter(Boolean))).sort();
+      const categories = Array.from(new Set(leadsData.map(l => l["Category"]).filter(Boolean))).sort();
+
+      const citySelect = document.getElementById("cityFilter");
+      citySelect.innerHTML = '<option value="ALL">All Tamil Nadu Cities</option>';
+      cities.forEach(c => {
+        citySelect.innerHTML += `<option value="${c}">${c}</option>`;
+      });
+
+      const catSelect = document.getElementById("categoryFilter");
+      catSelect.innerHTML = '<option value="ALL">All Categories</option>';
+      categories.forEach(c => {
+        catSelect.innerHTML += `<option value="${c}">${c}</option>`;
+      });
+    }
+
+    let selectedQuickCategory = "PROSPECTS";
+
+    function normalizeLeadStatus(rawStatus) {
+      const s = (rawStatus || "").toUpperCase().trim();
+      if (s.includes("SOCIAL")) {
+        return "HAS SOCIALS BUT NO WEBSITE";
+      }
+      if (s.includes("WEBSITE FOUND")) {
+        return "WEBSITE FOUND";
+      }
+      if (s.includes("NO WEBSITE") || s.includes("NO WEB")) {
+        return "NO WEBSITE OR SOCIALS";
+      }
+      return "NO WEBSITE OR SOCIALS";
+    }
+
+    function isProspect(lead) {
+      const norm = normalizeLeadStatus(lead["Verification Status"]);
+      if (norm === "WEBSITE FOUND") return false;
+      const web = (lead["Website"] || "").toLowerCase().trim();
+      if (web.startsWith("http") && !web.includes("instagram.com") && !web.includes("facebook.com") && !web.includes("wa.me")) {
+        return false;
+      }
+      return true;
+    }
+
+    function setQuickFilter(category) {
+      selectedQuickCategory = category;
+      document.querySelectorAll(".filter-pills-row .pill-btn").forEach(btn => btn.classList.remove("active"));
+      if (category === "ALL") {
+        document.getElementById("pillAll")?.classList.add("active");
+      } else if (category === "PROSPECTS") {
+        document.getElementById("pillProspects")?.classList.add("active");
+      } else if (category === "HAS SOCIALS BUT NO WEBSITE") {
+        document.getElementById("pillSocial")?.classList.add("active");
+      } else if (category === "NO WEBSITE OR SOCIALS") {
+        document.getElementById("pillNoWeb")?.classList.add("active");
+      } else if (category === "WHATSAPP") {
+        document.getElementById("pillWhatsapp")?.classList.add("active");
+      } else if (category === "MAILED") {
+        document.getElementById("pillMailed")?.classList.add("active");
+      } else if (category === "REPLIED") {
+        document.getElementById("pillReplied")?.classList.add("active");
+      } else if (category === "INTERESTED") {
+        document.getElementById("pillInterested")?.classList.add("active");
+      } else if (category === "CLIENT") {
+        document.getElementById("pillClient")?.classList.add("active");
+      } else if (category === "WEBSITE FOUND") {
+        document.getElementById("pillWebsiteFound")?.classList.add("active");
+      }
+
+      const statusSelect = document.getElementById("statusFilter");
+      if (statusSelect) {
+        statusSelect.value = category;
+      }
+      applyFilters();
+    }
+
+    function onStatusFilterChange(val) {
+      selectedQuickCategory = val;
+      document.querySelectorAll(".filter-pills-row .pill-btn").forEach(btn => btn.classList.remove("active"));
+      if (val === "ALL") {
+        document.getElementById("pillAll")?.classList.add("active");
+      } else if (val === "PROSPECTS") {
+        document.getElementById("pillProspects")?.classList.add("active");
+      } else if (val === "HAS SOCIALS BUT NO WEBSITE") {
+        document.getElementById("pillSocial")?.classList.add("active");
+      } else if (val === "NO WEBSITE OR SOCIALS") {
+        document.getElementById("pillNoWeb")?.classList.add("active");
+      } else if (val === "WHATSAPP") {
+        document.getElementById("pillWhatsapp")?.classList.add("active");
+      } else if (val === "MAILED") {
+        document.getElementById("pillMailed")?.classList.add("active");
+      } else if (val === "REPLIED") {
+        document.getElementById("pillReplied")?.classList.add("active");
+      } else if (val === "INTERESTED") {
+        document.getElementById("pillInterested")?.classList.add("active");
+      } else if (val === "CLIENT") {
+        document.getElementById("pillClient")?.classList.add("active");
+      } else if (val === "WEBSITE FOUND") {
+        document.getElementById("pillWebsiteFound")?.classList.add("active");
+      }
+      applyFilters();
+    }
+
+    function renderStats() {
+      // Outreach targets: leads without existing website
+      const targetLeads = leadsData.filter(l => isProspect(l));
+      const statTotalElem = document.getElementById("statTotal");
+      if (statTotalElem) statTotalElem.innerText = targetLeads.length;
+
+      const prospectsCount = targetLeads.length;
+      const allShopsCount = leadsData.length;
+      const websiteFoundCount = leadsData.filter(l => normalizeLeadStatus(l["Verification Status"]) === "WEBSITE FOUND").length;
+      const hasSocialsCount = leadsData.filter(l => normalizeLeadStatus(l["Verification Status"]) === "HAS SOCIALS BUT NO WEBSITE").length;
+      const noWebNoSocialCount = leadsData.filter(l => normalizeLeadStatus(l["Verification Status"]) === "NO WEBSITE OR SOCIALS").length;
+      const gmailCount = leadsData.filter(l => (l["Gmail"] || l["Email"] || "").includes("@")).length;
+      const whatsappCount = leadsData.filter(l => Boolean(l["Cleaned Mobile"] || l["Phone"]) && isProspect(l)).length;
+      const mailedCount = leadsData.filter(l => Boolean(l["Email Sent At"])).length;
+      const repliedCount = leadsData.filter(l => (l["WhatsApp Status"] || "").toUpperCase() === "REPLIED" || (l["Conversion Stage"] || "").toUpperCase() === "REPLIED" || Boolean(l["WhatsApp Reply"])).length;
+      const interestedCount = leadsData.filter(l => (l["Conversion Stage"] || "").toUpperCase() === "INTERESTED").length;
+      const clientCount = leadsData.filter(l => (l["Conversion Stage"] || "").toUpperCase() === "CLIENT").length;
+
+      const fileSub = document.getElementById("statCityBreakdown");
+      if (fileSub && !fileSub.innerText.includes("Active file")) {
+        fileSub.innerText = `${prospectsCount} Prospects / ${websiteFoundCount} Have Website (${allShopsCount} Total)`;
+      }
+
+      const statSocialElem = document.getElementById("statHasSocials");
+      if (statSocialElem) statSocialElem.innerText = hasSocialsCount;
+
+      const statNoWebElem = document.getElementById("statNoWebNoSocial");
+      if (statNoWebElem) statNoWebElem.innerText = noWebNoSocialCount;
+
+      const statGmailElem = document.getElementById("statGmails");
+      if (statGmailElem) statGmailElem.innerText = gmailCount;
+
+      const statWhatsappElem = document.getElementById("statWhatsapp");
+      if (statWhatsappElem) statWhatsappElem.innerText = whatsappCount;
+
+      const statMailedElem = document.getElementById("statMailed");
+      if (statMailedElem) statMailedElem.innerText = mailedCount;
+
+      // Update pill count badges
+      const pProspects = document.getElementById("pillCountProspects");
+      if (pProspects) pProspects.innerText = prospectsCount;
+
+      const pAll = document.getElementById("pillCountAll");
+      if (pAll) pAll.innerText = allShopsCount;
+
+      const pSocial = document.getElementById("pillCountSocial");
+      if (pSocial) pSocial.innerText = hasSocialsCount;
+
+      const pNoWeb = document.getElementById("pillCountNoWeb");
+      if (pNoWeb) pNoWeb.innerText = noWebNoSocialCount;
+
+      const pWhatsapp = document.getElementById("pillCountWhatsapp");
+      if (pWhatsapp) pWhatsapp.innerText = whatsappCount;
+
+      const pMailed = document.getElementById("pillCountMailed");
+      if (pMailed) pMailed.innerText = mailedCount;
+
+      const pReplied = document.getElementById("pillCountReplied");
+      if (pReplied) pReplied.innerText = repliedCount;
+
+      const pInterested = document.getElementById("pillCountInterested");
+      if (pInterested) pInterested.innerText = interestedCount;
+
+      const pClient = document.getElementById("pillCountClient");
+      if (pClient) pClient.innerText = clientCount;
+
+      const pWebsiteFound = document.getElementById("pillCountWebsiteFound");
+      if (pWebsiteFound) pWebsiteFound.innerText = websiteFoundCount;
+    }
+
+    function applyFilters() {
+      const search = (document.getElementById("searchInput").value || "").toLowerCase().trim();
+      const city = document.getElementById("cityFilter").value;
+      const cat = document.getElementById("categoryFilter").value;
+      const minRev = Number(document.getElementById("minReviewsFilter").value || 0);
+      const status = selectedQuickCategory;
+
+      currentLeads = leadsData.filter(l => {
+        const norm = normalizeLeadStatus(l["Verification Status"]);
+        const phone = (l["Phone"] || l["Cleaned Mobile"] || "");
+        const email = (l["Gmail"] || l["Email"] || "");
+
+        const matchSearch = !search || 
+          (l["Business Name"] || "").toLowerCase().includes(search) || 
+          (l["Category"] || "").toLowerCase().includes(search) || 
+          phone.toLowerCase().includes(search) || 
+          email.toLowerCase().includes(search) ||
+          (l["City"] || "").toLowerCase().includes(search) ||
+          (l["Address"] || "").toLowerCase().includes(search);
+        
+        const matchCity = city === "ALL" || l["City"] === city;
+        const matchCat = cat === "ALL" || l["Category"] === cat;
+        const matchRev = Number(l["Review Count"] || 0) >= minRev;
+
+        let matchStatus = true;
+        if (status === "ALL") {
+          matchStatus = true;
+        } else if (status === "PROSPECTS") {
+          matchStatus = isProspect(l);
+        } else if (status === "HAS SOCIALS BUT NO WEBSITE") {
+          matchStatus = norm === "HAS SOCIALS BUT NO WEBSITE";
+        } else if (status === "NO WEBSITE OR SOCIALS") {
+          matchStatus = norm === "NO WEBSITE OR SOCIALS";
+        } else if (status === "WHATSAPP") {
+          matchStatus = Boolean(phone) && isProspect(l);
+        } else if (status === "MAILED") {
+          matchStatus = Boolean(l["Email Sent At"]);
+        } else if (status === "REPLIED") {
+          matchStatus = (l["WhatsApp Status"] || "").toUpperCase() === "REPLIED" || (l["Conversion Stage"] || "").toUpperCase() === "REPLIED" || Boolean(l["WhatsApp Reply"]);
+        } else if (status === "INTERESTED") {
+          matchStatus = (l["Conversion Stage"] || "").toUpperCase() === "INTERESTED";
+        } else if (status === "CLIENT") {
+          matchStatus = (l["Conversion Stage"] || "").toUpperCase() === "CLIENT";
+        } else if (status === "WEBSITE FOUND") {
+          matchStatus = norm === "WEBSITE FOUND" || !isProspect(l);
+        }
+
+        return matchSearch && matchCity && matchCat && matchRev && matchStatus;
+      });
+
+      renderLeads();
+    }
+
+    function copyCustomText(text, msg = "Copied!") {
+      navigator.clipboard.writeText(text).then(() => {
+        alert(msg);
+      });
+    }
+
+    async function changeFunnelStage(name, newStage) {
+      const lead = leadsData.find(l => l["Business Name"] === name);
+      if (lead) {
+        lead["Conversion Stage"] = newStage;
+        if (newStage === "REPLIED" || newStage === "CLIENT" || newStage === "INTERESTED") {
+          lead["WhatsApp Status"] = newStage;
+        }
+        renderStats();
+        applyFilters();
+      }
+
+      try {
+        await fetch("/api/update-stage", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ identifier: name, stage: newStage })
+        });
+      } catch (e) {
+        // silent fallback
+      }
+    }
+
+    function renderLeads() {
+      const container = document.getElementById("leadsContainer");
+      if (currentLeads.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 4rem; color: var(--text-dim);">
+            <h3>No outreach leads found matching your criteria.</h3>
+            <p>Try switching filter tabs or searching a different city or category.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = currentLeads.map((lead, idx) => {
+        const name = lead["Business Name"] || "Unnamed Business";
+        const city = lead["City"] || "Tamil Nadu";
+        const cat = lead["Category"] || "Local Business";
+        const rating = Number(lead["Rating"] || 0).toFixed(1);
+        const reviews = Number(lead["Review Count"] || 0).toLocaleString();
+        const phone = lead["Phone"] || lead["Cleaned Mobile"] || "";
+        const cleanPhone = (lead["Cleaned Mobile"] || lead["Phone"] || "").replace(/[^0-9]/g, "");
+        const gmail = lead["Gmail"] || lead["Email"] || "";
+        const mapsUrl = lead["Google Maps URL"] || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name + " " + city)}`;
+        const normStatus = normalizeLeadStatus(lead["Verification Status"]);
+        const isHot = Number(lead["Review Count"] || 0) >= 500;
+        const encodedQuery = encodeURIComponent(name + " " + city);
+        const socialUrl = lead["Social Media URL"] || (lead["Verification Notes"] && lead["Verification Notes"].startsWith("http") ? lead["Verification Notes"] : "");
+        const hasSocials = normStatus === "HAS SOCIALS BUT NO WEBSITE" || Boolean(socialUrl);
+
+        // Funnel stage calculation
+        const explicitStage = (lead["Conversion Stage"] || "").toUpperCase();
+        const waStatus = (lead["WhatsApp Status"] || "").toUpperCase();
+        const hasReply = Boolean(lead["WhatsApp Reply"]);
+        let stage = explicitStage;
+        if (!stage) {
+          if (waStatus === "CLIENT") stage = "CLIENT";
+          else if (waStatus === "REPLIED" || hasReply) stage = "REPLIED";
+          else if (waStatus === "FOLLOW_UP_SENT") stage = "FOLLOW_UP_SENT";
+          else if (waStatus === "SENT" || lead["Email Sent At"]) stage = "SENT";
+          else stage = "DISCOVERED";
+        }
+
+        const cleanName = cleanBusinessName(name);
+        const waPitchQuick = hasSocials 
+          ? `Hi, is this the owner or manager at ${cleanName}?\n\nI came across your place while looking at popular shops in ${city}. Loved your customer reviews and your social page!\n\nI noticed you don't have an official website linked on Google for customers to view your services or order directly on WhatsApp.\n\nI'm a freelance web designer from Tamil Nadu. I have a quick 15-second video preview of a clean mobile template from one of my previous client projects with direct WhatsApp ordering.\n\nCan I share the short video recording here so you can check it out?`
+          : `Hi, is this the owner or manager at ${cleanName}?\n\nFound your shop on Google Maps in ${city} with great reviews. I noticed your profile doesn't have an official website listed for people searching on Google.\n\nI'm a freelance web designer from Tamil Nadu. I have a quick 15-second video preview of a clean mobile template from one of my previous client projects showing how customers can order directly on WhatsApp.\n\nCan I share the short preview recording here so you can take a look?`;
+
+        let statusClass = "no-web-no-social";
+        if (normStatus === "HAS SOCIALS BUT NO WEBSITE") statusClass = "has-socials";
+        else if (normStatus === "WEBSITE FOUND") statusClass = "website-found";
+
+        return `
+          <div class="lead-card">
+            <div class="lead-title-area">
+              <div class="lead-name">
+                ${name}
+              </div>
+              <div class="lead-tags">
+                <span class="tag tag-city">${city}</span>
+                <span class="tag tag-cat">${cat}</span>
+                ${isHot ? '<span class="tag tag-hot">🔥 500+ REVIEWS</span>' : ''}
+                ${gmail ? `<span class="tag tag-gmail" onclick="copyCustomText('${gmail}', 'Copied Gmail: ${gmail}')" title="Click to copy Gmail">✉️ ${gmail}</span>` : ''}
+                ${lead["Email Sent At"] ? `<span class="tag" style="background: rgba(16, 185, 129, 0.2); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.4);" title="Cold email pitch delivered">🚀 MAILED (${lead["Email Sent At"]})</span>` : ''}
+                ${stage !== 'DISCOVERED' ? `<span class="tag" style="background: rgba(99, 102, 241, 0.2); color: #C7D2FE; border: 1px solid rgba(99, 102, 241, 0.4); font-weight: 700;">🎯 ${stage}</span>` : ''}
+              </div>
+              ${lead["WhatsApp Reply"] ? `<div style="font-size: 0.78rem; color: #34D399; background: rgba(16,185,129,0.12); padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid rgba(16,185,129,0.3); margin-top: 0.35rem;">💬 <strong>Inbound Reply:</strong> "${lead["WhatsApp Reply"]}"</div>` : ''}
+              <div class="lead-address">📍 ${lead["Address"] || "Tamil Nadu, India"}</div>
+            </div>
+
+            <div class="lead-metrics">
+              <div class="metric-rating">⭐ ${rating}</div>
+              <div class="metric-reviews">💬 <strong>${reviews}</strong> customer reviews</div>
+              <div style="font-size: 0.8rem; color: #818CF8; font-weight: 600;">Score: ${(!isNaN(parseInt(lead["Lead Score"])) && parseInt(lead["Lead Score"]) > 0) ? parseInt(lead["Lead Score"]) : 85}/100</div>
+            </div>
+
+            <div>
+              <label style="font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); display: block; margin-bottom: 0.3rem;">Verification</label>
+              <select class="verification-select ${statusClass}" onchange="updateLeadStatus('${name.replace(/'/g, "\\'")}', this.value)">
+                <option value="HAS SOCIALS BUT NO WEBSITE" ${normStatus === 'HAS SOCIALS BUT NO WEBSITE' ? 'selected' : ''}>📱 Has Socials (No Web)</option>
+                <option value="NO WEBSITE OR SOCIALS" ${normStatus === 'NO WEBSITE OR SOCIALS' ? 'selected' : ''}>🚫 No Website or Socials</option>
+                <option value="WEBSITE FOUND" ${normStatus === 'WEBSITE FOUND' ? 'selected' : ''}>🌐 Website Found</option>
+              </select>
+
+              <label style="font-size: 0.7rem; text-transform: uppercase; color: #A5B4FC; display: block; margin-bottom: 0.3rem; margin-top: 0.5rem; font-weight: 700;">Conversion Stage</label>
+              <select class="verification-select" onchange="changeFunnelStage('${name.replace(/'/g, "\\'")}', this.value)" style="border-color: rgba(99,102,241,0.5); color: #C7D2FE;">
+                <option value="DISCOVERED" ${stage === 'DISCOVERED' ? 'selected' : ''}>🔍 Discovered</option>
+                <option value="SENT" ${stage === 'SENT' ? 'selected' : ''}>📨 Outreach Sent</option>
+                <option value="FOLLOW_UP_SENT" ${stage === 'FOLLOW_UP_SENT' ? 'selected' : ''}>⏳ Follow-up Sent</option>
+                <option value="REPLIED" ${stage === 'REPLIED' ? 'selected' : ''}>💬 Replied</option>
+                <option value="INTERESTED" ${stage === 'INTERESTED' ? 'selected' : ''}>⭐ Interested (Video Req)</option>
+                <option value="VIDEO_SENT" ${stage === 'VIDEO_SENT' ? 'selected' : ''}>🎬 Video Sent</option>
+                <option value="CALL_SCHEDULED" ${stage === 'CALL_SCHEDULED' ? 'selected' : ''}>📞 Call Booked</option>
+                <option value="CLIENT" ${stage === 'CLIENT' ? 'selected' : ''}>🏆 Won Client</option>
+                <option value="NOT_INTERESTED" ${stage === 'NOT_INTERESTED' ? 'selected' : ''}>❌ Not Interested</option>
+              </select>
+            </div>
+
+            <div class="lead-actions">
+              ${phone ? `<a href="tel:${phone}" class="action-icon-btn">📞 ${phone}</a>` : ''}
+              ${cleanPhone ? `<a href="https://wa.me/${cleanPhone}?text=${encodeURIComponent(waPitchQuick)}" target="_blank" class="action-icon-btn" style="border-color: #25D366; color: #22C55E; font-weight: 600;" title="Send Pre-Written Pitch via WhatsApp">💬 WhatsApp</a>` : ''}
+              ${gmail ? `<button class="action-icon-btn" style="border-color: #F59E0B; color: #FBBF24;" onclick="openPitchModal('${name.replace(/'/g, "\\'")}', 'email')" title="Send Cold Email via Gmail">✉️ Email</button>` : ''}
+              <a href="${mapsUrl}" target="_blank" class="action-icon-btn">🗺️ Maps</a>
+              <a href="https://www.google.com/search?q=${encodedQuery}" target="_blank" class="action-icon-btn" title="Search Google for this business">🔍 Search</a>
+              ${socialUrl ? `<a href="${socialUrl}" target="_blank" class="action-icon-btn" style="border-color: #06B6D4; color: #38BDF8;" title="View Social Profile">📱 Social</a>` : ''}
+              ${(lead["Website"] && lead["Website"].startsWith("http")) ? `<a href="${lead["Website"]}" target="_blank" class="action-icon-btn" style="border-color: #38BDF8; color: #38BDF8;" title="Official Website">🌐 Website</a>` : ''}
+              <button class="action-icon-btn primary" onclick="openPitchModal('${name.replace(/'/g, "\\'")}', 'whatsapp')">💬 Pitch</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function updateLeadStatus(name, newStatus) {
+      const lead = leadsData.find(l => l["Business Name"] === name);
+      if (lead) {
+        lead["Verification Status"] = newStatus;
+        renderStats();
+        applyFilters();
+      }
+    }
+
+    function cleanBusinessName(name) {
+      if (!name) return "there";
+      let clean = name
+        .replace(/\s*[-–—|•,]\s*(Coimbatore|Chennai|Trichy|Madurai|Salem|Tiruppur|Erode|Vellore|Tirunelveli|Tamil Nadu|TN|Branch|Head Office|Main Branch).*$/i, '')
+        .replace(/\s*[-–—|•]\s*(Makeup Artist|Salon|Restaurant|Bakery|Studio|Sweets|Bakes|Spa|Boutique).*$/i, '')
+        .replace(/\s*(Pvt\.?\s*Ltd\.?|LLP|Ltd\.?|LLC)/gi, '')
+        .replace(/\s*\([^)]*\)/g, '')
+        .trim();
+      return clean || name;
+    }
+
+    let activePitchLead = null;
+
+    function openPitchModal(name, initialTab = 'whatsapp') {
+      const lead = leadsData.find(l => l["Business Name"] === name);
+      if (!lead) return;
+      activePitchLead = lead;
+
+      const norm = normalizeLeadStatus(lead["Verification Status"]);
+      const city = lead["City"] || "Tamil Nadu";
+      const cleanName = cleanBusinessName(name);
+      const gmail = lead["Gmail"] || lead["Email"] || "";
+      const hasSocials = norm === "HAS SOCIALS BUT NO WEBSITE" || Boolean(lead["Social Media URL"]);
+
+      document.getElementById("modalTitle").innerText = `💬 Outreach for ${cleanName}`;
+      document.getElementById("modalSubtitle").innerText = `${city} • ${lead["Category"] || "Local Business"}`;
+
+      // 1. Natural WhatsApp Pitch (Template Video Preview from Previous Project)
+      let waPitch = "";
+      if (hasSocials) {
+        waPitch = `Hi, is this the owner or manager at ${cleanName}?\n\nI came across your place while looking at popular shops in ${city}. Loved your customer reviews and your social page!\n\nI noticed you don't have an official website linked on Google for customers to view your services or order directly on WhatsApp.\n\nI'm a freelance web designer from Tamil Nadu. I have a quick 15-second video preview of a clean mobile template from one of my previous client projects with direct WhatsApp ordering.\n\nCan I share the short video recording here so you can check it out?`;
+      } else {
+        waPitch = `Hi, is this the owner or manager at ${cleanName}?\n\nFound your shop on Google Maps in ${city} with great reviews. I noticed your profile doesn't have an official website listed for people searching on Google.\n\nI'm a freelance web designer from Tamil Nadu. I have a quick 15-second video preview of a clean mobile template from one of my previous client projects showing how customers can order directly on WhatsApp.\n\nCan I share the short preview recording here so you can take a look?`;
+      }
+      document.getElementById("pitchWhatsappText").value = waPitch;
+
+      // 2. High-Converting Email Pitch & Dynamic Subject Presets
+      const revCount = parseInt(lead["Review Count"] || 0, 10);
+      const cat = (lead["Category"] || "").toLowerCase();
+
+      let subjectOptions = [
+        `Quick video preview: mobile template for ${cleanName}`,
+        `Video preview for ${cleanName} (${city})`,
+        `Quick idea for ${cleanName} (${city})`,
+        `Mobile template preview (${cleanName})`,
+        `${cleanName} on Google Maps`
+      ];
+
+      if (revCount >= 40) {
+        subjectOptions.splice(2, 0, `Loved your reviews for ${cleanName} - quick video`);
+      }
+
+      // De-duplicate
+      subjectOptions = [...new Set(subjectOptions)];
+
+      const emailSubject = subjectOptions[0];
+      let emailBody = "";
+      if (hasSocials) {
+        emailBody = `Hi, is this the owner or manager at ${cleanName}?\n\nI came across your place while looking at popular shops in ${city}. Loved your customer reviews and your social page!\n\nI noticed you don't have an official website linked on Google for customers to view your services or order directly on WhatsApp.\n\nI'm a freelance web designer from Tamil Nadu. I have a quick 15-second video preview of a clean mobile template from one of my previous client projects with direct WhatsApp ordering.\n\nCan I share the short video recording with you so you can check it out?\n\nBest,\nKrishna`;
+      } else {
+        emailBody = `Hi, is this the owner or manager at ${cleanName}?\n\nFound your shop on Google Maps in ${city} with great reviews. I noticed your profile doesn't have an official website listed for people searching on Google to view your menu or services and order directly on WhatsApp.\n\nI'm a freelance web designer from Tamil Nadu. I have a quick 15-second video preview of a clean mobile template from one of my previous client projects showing how customers can order directly on WhatsApp.\n\nCan I share the short preview recording with you so you can take a look?\n\nBest,\nKrishna`;
+      }
+
+      document.getElementById("pitchEmailTo").value = gmail;
+      document.getElementById("pitchEmailSubject").value = emailSubject;
+      document.getElementById("pitchEmailBody").value = emailBody;
+
+      // Render Subject Option Chips
+      const chipsContainer = document.getElementById("subjectChipsContainer");
+      if (chipsContainer) {
+        chipsContainer.innerHTML = "";
+        subjectOptions.forEach((subj, idx) => {
+          const chip = document.createElement("button");
+          chip.type = "button";
+          chip.className = "subject-chip" + (idx === 0 ? " active" : "");
+          chip.innerText = subj;
+          chip.onclick = () => {
+            document.getElementById("pitchEmailSubject").value = subj;
+            chipsContainer.querySelectorAll(".subject-chip").forEach(c => c.classList.remove("active"));
+            chip.classList.add("active");
+            updateEmailLinks();
+          };
+          chipsContainer.appendChild(chip);
+        });
+      }
+
+      // Update links
+      updateWhatsappLink();
+      updateEmailLinks();
+
+      // Reset copied notices
+      document.getElementById("copyWaSuccessMsg").style.display = "none";
+      document.getElementById("copyEmailSuccessMsg").style.display = "none";
+
+      // Switch to requested tab
+      switchOutreachTab(initialTab);
+
+      document.getElementById("pitchModal").style.display = "flex";
+    }
+
+    function switchOutreachTab(tab) {
+      const isWa = tab === 'whatsapp';
+      document.getElementById("tabBtnWhatsapp").classList.toggle("active", isWa);
+      document.getElementById("tabBtnEmail").classList.toggle("active", !isWa);
+      document.getElementById("tabContentWhatsapp").classList.toggle("active", isWa);
+      document.getElementById("tabContentEmail").classList.toggle("active", !isWa);
+    }
+
+    function updateWhatsappLink() {
+      if (!activePitchLead) return;
+      const cleanPhone = (activePitchLead["Phone"] || activePitchLead["Cleaned Mobile"] || "").replace(/[^0-9]/g, "");
+      const text = document.getElementById("pitchWhatsappText").value;
+      const btn = document.getElementById("directWhatsappBtn");
+      if (cleanPhone) {
+        btn.href = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`;
+        btn.style.display = "inline-flex";
+      } else {
+        btn.style.display = "none";
+      }
+    }
+
+    function updateEmailLinks() {
+      const to = document.getElementById("pitchEmailTo").value.trim();
+      const subject = document.getElementById("pitchEmailSubject").value;
+      const body = document.getElementById("pitchEmailBody").value;
+      const statusBadge = document.getElementById("emailValidationStatus");
+      
+      const mailtoBtn = document.getElementById("directMailtoBtn");
+      const gmailWebBtn = document.getElementById("directGmailWebBtn");
+
+      // Validate email syntax
+      const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+      const isValid = emailRegex.test(to) && !to.includes("..") && !/\.(png|jpg|jpeg|gif|svg|webp|css|js)$/i.test(to);
+
+      if (statusBadge) {
+        if (!to) {
+          statusBadge.innerText = "⚠️ No email found for shop";
+          statusBadge.style.color = "#F59E0B";
+        } else if (isValid) {
+          statusBadge.innerText = "✔ Valid format";
+          statusBadge.style.color = "#10B981";
+        } else {
+          statusBadge.innerText = "✖ Invalid email format";
+          statusBadge.style.color = "#EF4444";
+        }
+      }
+
+      if (to && isValid) {
+        mailtoBtn.href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        mailtoBtn.style.display = "inline-flex";
+
+        // Direct Gmail Web Compose link
+        gmailWebBtn.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        gmailWebBtn.style.display = "inline-flex";
+      } else {
+        mailtoBtn.style.display = "none";
+        gmailWebBtn.style.display = "none";
+      }
+    }
+
+    function copyWhatsappPitch() {
+      const text = document.getElementById("pitchWhatsappText").value;
+      navigator.clipboard.writeText(text).then(() => {
+        const msg = document.getElementById("copyWaSuccessMsg");
+        msg.style.display = "inline";
+        setTimeout(() => { msg.style.display = "none"; }, 3000);
+      });
+    }
+
+    function copyEmailPitch() {
+      const to = document.getElementById("pitchEmailTo").value;
+      const subject = document.getElementById("pitchEmailSubject").value;
+      const body = document.getElementById("pitchEmailBody").value;
+      const full = `To: ${to}\nSubject: ${subject}\n\n${body}`;
+      navigator.clipboard.writeText(full).then(() => {
+        const msg = document.getElementById("copyEmailSuccessMsg");
+        msg.style.display = "inline";
+        setTimeout(() => { msg.style.display = "none"; }, 3000);
+      });
+    }
+
+    function closeModal() {
+      document.getElementById("pitchModal").style.display = "none";
+    }
+
+    function closeModalOnBackdrop(e) {
+      if (e.target.id === "pitchModal") {
+        closeModal();
+      }
+    }
+
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const text = e.target.result;
+        parseCSVText(text);
+      };
+      reader.readAsText(file);
+    }
+
+    function parseCSVText(csvText, silent = false) {
+      const lines = csvText.split(/\r\n|\n/).filter(l => l.trim().length > 0);
+      if (lines.length < 2) return;
+
+      // Simple CSV row parser handling quotes
+      function parseCSVRow(str) {
+        const result = [];
+        let cur = '';
+        let inQuotes = false;
+        for (let i = 0; i < str.length; i++) {
+          const char = str[i];
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            result.push(cur.trim());
+            cur = '';
+          } else {
+            cur += char;
+          }
+        }
+        result.push(cur.trim());
+        return result;
+      }
+
+      const headers = parseCSVRow(lines[0]).map(h => h.replace(/^["']|["']$/g, ''));
+      const newLeads = [];
+
+      for (let i = 1; i < lines.length; i++) {
+        const values = parseCSVRow(lines[i]);
+        if (values.length < 3) continue;
+        const obj = {};
+        headers.forEach((h, idx) => {
+          obj[h] = values[idx] ? values[idx].replace(/^["']|["']$/g, '') : '';
+        });
+        newLeads.push(obj);
+      }
+
+      if (newLeads.length > 0) {
+        leadsData = newLeads;
+        currentLeads = [...leadsData];
+        init(true);
+        if (!silent) {
+          alert(`Successfully loaded ${newLeads.length} leads from CSV!`);
+        }
+      }
+    }
+
+    async function loadLatestLeadsFromBackend() {
+      try {
+        const res = await fetch("leads_output/master_scraped_leads.csv?t=" + Date.now());
+        if (res.ok) {
+          const text = await res.text();
+          if (text && text.trim().length > 0) {
+            parseCSVText(text, true);
+          }
+        }
+      } catch (e) {
+        // Fallback to embedded default data
+      }
+    }
+
+    function exportUpdatedCSV() {
+      if (leadsData.length === 0) {
+        alert("No leads to export.");
+        return;
+      }
+
+      const headers = Object.keys(leadsData[0]);
+      const csvRows = [headers.join(",")];
+
+      leadsData.forEach(lead => {
+        const row = headers.map(h => {
+          const val = (lead[h] || "").toString().replace(/"/g, '""');
+          return `"${val}"`;
+        });
+        csvRows.push(row.join(","));
+      });
+
+      const blob = new Blob([csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `verified_leads_${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // Auto initialize
+    window.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>

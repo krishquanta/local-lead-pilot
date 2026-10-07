@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  scraper-api:
+    build: .
+    container_name: gmaps_scraper_api_service
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+    working_dir: /app
+    tmpfs:
+      - /tmp:size=512M
